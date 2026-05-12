@@ -1,29 +1,43 @@
-// ---------------- LINE CHART ----------------
-const ctx1 = document.getElementById('revenueChart');
+import Chart from 'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.esm.js';
 
-new Chart(ctx1, {
-    type: 'line',
+new Chart(document.getElementById('revenueChart'), {
+    type: 'bar',
     data: {
-        labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-        datasets: [{
-            label: 'Revenue (Rs)',
-            data: [5000, 7000, 6000, 8000, 5500, 9000, 7500],
-            borderColor: '#ff5722',
-            backgroundColor: 'rgba(255,87,34,0.2)',
-            tension: 0.4,
-            fill: true,
-            pointRadius: 5
-        }]
+        labels: ['Oct 20','Oct 21','Oct 22','Oct 23','Oct 24','Oct 25','Oct 26'],
+        datasets: [
+            { label: 'Active Sales', data: [390,260,330,100,340,100,410], backgroundColor: '#EF9F27', borderRadius: 4 },
+            { label: 'Target Sales', data: [140,80,430,220,140,260,270], backgroundColor: '#1D9E75', borderRadius: 4 }
+        ]
     },
     options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                display: false
-            }
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+            x: { ticks: { font: { size: 11 } }, grid: { display: false } },
+            y: { ticks: { font: { size: 11 }, callback: v => '$' + v }, grid: { color: 'rgba(0,0,0,0.05)' } }
         }
     }
 });
+
+new Chart(document.getElementById('orderChart'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Search','Added to cart','Ordered','Delivered'],
+        datasets: [{
+            data: [30,25,28,17],
+            backgroundColor: ['#EF9F27','#7F77DD','#1D9E75','#378ADD'],
+            borderWidth: 3,
+            borderColor: '#fff',
+            hoverOffset: 6
+        }]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false,
+        cutout: '65%',
+        plugins: { legend: { display: false } }
+    }
+});
+</script>
 
 
 // ---------------- PIE CHART ----------------

@@ -4,43 +4,47 @@
     <meta charset="UTF-8">
     <title>POS Login</title>
     <link rel="stylesheet" href="assets/styles/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <script type="module" src="controller/Dashboard.js"></script>
+    <script type="module" src="controller/LoginController.js"></script>
+    <script type="module" src="controller/CustomerController.js"></script>
+    <script type="module" src="controller/DropDownController.js"></script>
+    <script type="module" src="controller/ItemController.js"></script>
+    <script type="module" src="controller/OrderController.js"></script>
+    <script type="module" src="controller/SidebarController.js"></script>
+
 </head>
 <body>
 
-<!-- Login -->
-
 <section id="login_section">
-<form class="w-50 m-auto">
-<div class="login-container">
-    <div class="left-panel">
-        <h1>WELCOME!</h1>
-        <p>The most popular POS System is here.</p>
+    <form class="w-50 m-auto">
+        <div class="login-container">
+            <div class="left-panel">
+                <h1>WELCOME!</h1>
+                <p>The most popular POS System is here.</p>
+            </div>
 
-    </div>
+            <div class="right-panel">
+                <div class="login-box">
+                    <h2>Hello!</h2>
+                    <p>Sign in to Get Started</p>
 
-    <div class="right-panel">
-        <div class="login-box">
-            <h2>Hello!</h2>
-            <p>Sign in to Get Started</p>
+                    <input type="text" id="username" placeholder="Username">
+                    <input type="password" id="password" placeholder="Password">
 
-            <input type="text" id="username" placeholder="Username">
-            <input type="password" id="password" placeholder="Password">
-
-            <button type="button" id="login_btn">Login</button>
+                    <button type="button" id="login_btn">Login</button>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-</form>
+    </form>
 </section>
 
 
 <!-- Sidebar -->
-
-
 <section id="dashboard_section" style="display:none;">
-<form class="w-50 m-auto">
 
-<div class="dashboard">
+<div class="main">
 
     <aside class="sidebar">
         <h2>DASHBOARD</h2>
@@ -57,35 +61,71 @@
 
         <section id="dashboard_content" class="content">
             <h1 id="d1">Dashboard</h1>
-            <div class="container-fluid p-4">
-                <div class="row g-4">
 
-                    <!-- Line Chart -->
-                    <div class="col-md-7">
-                        <div class="card-box">
-                            <div class="title">📈 Revenue Overview (Last 7 Days)</div>
-                            <img src="assets/lib/piechart.png" class="card-img">
-                            <canvas id="revenueChart"></canvas>
-                        </div>
+            <!-- Stat Cards -->
+            <div class="dash-stat-grid">
+                <div class="dash-stat-card">
+                    <div class="dash-stat-icon" style="color:#378ADD">📦</div>
+                    <div class="dash-stat-label">Products</div>
+                    <div class="dash-stat-value" id="stat_products">2,564</div>
+                    <div class="dash-stat-change up">↑ Increased 75%</div>
+                </div>
+                <div class="dash-stat-card">
+                    <div class="dash-stat-icon" style="color:#EF9F27">🛒</div>
+                    <div class="dash-stat-label">Orders</div>
+                    <div class="dash-stat-value" id="stat_orders">3,612</div>
+                    <div class="dash-stat-change down">↓ Decreased 0.5%</div>
+                </div>
+                <div class="dash-stat-card">
+                    <div class="dash-stat-icon" style="color:#1D9E75">📈</div>
+                    <div class="dash-stat-label">Sales</div>
+                    <div class="dash-stat-value" id="stat_sales">35,500</div>
+                    <div class="dash-stat-change up">↑ Increased 17%</div>
+                </div>
+                <div class="dash-stat-card">
+                    <div class="dash-stat-icon" style="color:#7F77DD">👥</div>
+                    <div class="dash-stat-label">Customers</div>
+                    <div class="dash-stat-value" id="stat_customers">1,865</div>
+                    <div class="dash-stat-change up">↑ Increased 7.2%</div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="dash-chart-grid">
+                <div class="dash-chart-card">
+                    <div class="dash-chart-header">
+                        <span class="dash-chart-title">Sales Difference</span>
+                        <span class="dash-chart-sub">Last 7 days</span>
                     </div>
-
-                    <!-- Pie Chart -->
-                    <div class="col-md-5">
-                        <div class="card-box">
-                            <div class="title">📊 Order Status Distribution</div>
-                            <img src="assets/lib/Barchart.png" class="card-img">
-                            <canvas id="orderChart"></canvas>
-                        </div>
+                    <div style="position:relative; height:220px;">
+                        <canvas id="revenueChart" role="img" aria-label="Bar chart of active vs target sales over 7 days"></canvas>
                     </div>
+                    <div class="dash-legend">
+                        <span><span class="dash-dot" style="background:#EF9F27"></span>Active Sales</span>
+                        <span><span class="dash-dot" style="background:#1D9E75"></span>Target Sales</span>
+                    </div>
+                </div>
 
+                <div class="dash-chart-card">
+                    <div class="dash-chart-header">
+                        <span class="dash-chart-title">Statistics</span>
+                    </div>
+                    <div style="position:relative; height:200px;">
+                        <canvas id="orderChart" role="img" aria-label="Donut chart showing order status distribution"></canvas>
+                    </div>
+                    <div class="dash-legend" style="justify-content:center; flex-wrap:wrap;">
+                        <span><span class="dash-dot" style="background:#EF9F27"></span>Search</span>
+                        <span><span class="dash-dot" style="background:#7F77DD"></span>Added to cart</span>
+                        <span><span class="dash-dot" style="background:#1D9E75"></span>Ordered</span>
+                        <span><span class="dash-dot" style="background:#378ADD"></span>Delivered</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-       <!-- Customer Part -->
-        <section id="customer_content" class="content p-5">
+        <section id="customer_content" class="content">
 
-            <form class="w-50 m-auto">
+            <form>
                 <h1 class="text-center">Customer Management</h1>
 
                 <div class="mb-3">
@@ -119,7 +159,7 @@
             <table class="table m-5">
                 <thead>
                 <tr>
-                    <th>#ID</th>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>Phone</th>
                     <th>Address</th>
@@ -130,9 +170,7 @@
 
         </section>
 
-        <!-- Item Part -->
-
-            <section id="item_content" class="content p-5">
+        <section id="item_content" class="content p-5">
 
                 <form class="w-50 m-auto">
                     <h1 class="text-center">Item Management</h1>
@@ -185,34 +223,28 @@
 
             </section>
 
-        <!-- Order Part -->
-
         <section id="order_content" class="content p-4">
 
             <h1>Order Management</h1>
 
             <!-- Customer + Item Select -->
-            <div class="row mb-3">
-
-                <div class="col-md-4">
+            <div class="order-top-box">
+                <div class="input-group">
                     <label>Customer</label>
                     <select id="order_customer" class="form-control"></select>
                 </div>
 
-                <div class="col-md-4">
+                <div class="input-group">
                     <label>Item</label>
                     <select id="order_item" class="form-control"></select>
                 </div>
 
-                <div class="col-md-2">
+                <div class="input-group">
                     <label>Qty</label>
                     <input type="number" id="order_qty" class="form-control">
                 </div>
 
-                <div class="col-md-2 d-flex align-items-end">
-                    <button type="button" id="add_item_btn" class="btn btn-success w-100">Add</button>
-                </div>
-
+                <button type="button" id="add_item_btn">Add</button>
             </div>
 
             <!-- Cart Table -->
@@ -251,8 +283,6 @@
             </table>
 
         </section>
-
-
 
     </main>
 </div>
