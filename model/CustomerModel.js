@@ -9,7 +9,6 @@ class Customer {
     }
 }
 
-
 const addCustomerData = (id, name, phone, address) => {
     customer_db.push(new Customer(id, name, phone, address));
 }

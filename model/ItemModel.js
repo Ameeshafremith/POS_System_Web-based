@@ -1,26 +1,24 @@
 import {item_db} from "../db/db.js";
 
 class Item {
-    constructor(id, name, qty, unit, price) {
+    constructor(id, name, qty, price) {
         this.id = id;
         this.name = name;
         this.qty = qty;
-        this.unit = unit;
         this.price = price;
     }
 }
 
 
-const addItemData = (id, name, qty, unit,price) => {
-    item_db.push(new Item(id, name, qty, unit,price));
+const addItemData = (id, name, qty, price) => {
+    item_db.push(new Item(id, name, qty, price));
 }
 
-const updateItemData = (id, name, qty, unit,price) => {
+const updateItemData = (id, name, qty, price) => {
     let i = item_db.find(i => i.id == id);
     if (i) {
         i.name = name;
         i.qty = qty;
-        i.unit = unit;
         i.price = price;
     }
 }

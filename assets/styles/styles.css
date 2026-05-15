@@ -548,10 +548,10 @@ body {
     background: #fff;
 }
 
-#item_unit_input {
+/*#item_unit_input {
     height: 42px !important;
     resize: none;
-}
+}*/
 
 #item_save_btn,
 #item_update_btn,

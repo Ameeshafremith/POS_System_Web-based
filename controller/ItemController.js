@@ -21,7 +21,6 @@ const loadItemTbl = () => {
             <td>${item.id}</td>
             <td>${item.name}</td>
             <td>${item.qty}</td>
-            <td>${item.unit}</td>
             <td>${item.price}</td>
 
         </tr>
@@ -44,7 +43,6 @@ $('#item_tbody').on('click', 'tr', function () {
     $('#item_id_input').val(obj.id);
     $('#item_name_input').val(obj.name);
     $('#item_qty_input').val(obj.qty);
-    $('#item_unit_input').val(obj.unit);
     $('#item_price_input').val(obj.price);
 });
 
@@ -54,7 +52,6 @@ $('#item_save_btn').on('click', function () {
     let id = $('#item_id_input').val();
     let name = $('#item_name_input').val();
     let qty = $('#item_qty_input').val();
-    let unit = $('#item_unit_input').val();
     let price = $('#item_price_input').val();
 
     if (id == "") {
@@ -77,17 +74,12 @@ $('#item_save_btn').on('click', function () {
         return;
     }
 
-    if (unit == "") {
-        Swal.fire({icon:"error", title:"Invalid unit"});
-        return;
-    }
-
     if (price == "") {
         Swal.fire({icon:"error", title:"Invalid price"});
         return;
     }
 
-    addItemData(id, name, qty, unit,price);
+    addItemData(id, name, qty, price);
 
     loadItemTbl();
     cleanItemForm();
@@ -103,16 +95,14 @@ $('#item_update_btn').on('click', function () {
     let id = $('#item_id_input').val();
     let name = $('#item_name_input').val();
     let qty = $('#item_qty_input').val();
-    let unit = $('#item_unit_input').val();
     let price = $('#item_price_input').val();
 
     (id == "") ? Swal.fire({icon:"error",title:"Invalid ID"}) :
         (!(getItemDataById(id))) ? Swal.fire({icon:"error",title:"Item not found"}) :
             (name == "") ? Swal.fire({icon:"error",title:"Invalid Name"}) :
                 (qty == "") ? Swal.fire({icon:"error",title:"Invalid Quantity"}) :
-                    (unit == "") ? Swal.fire({icon:"error",title:"Invalid Unit"}) :
-                        (price == "") ? Swal.fire({icon:"error",title:"Invalid price"}) :
-                        updateItemData(id,name,qty,unit,price);
+                    (price == "") ? Swal.fire({icon:"error",title:"Invalid price"}) :
+                    updateItemData(id,name,qty,price);
 
     cleanItemForm();
     loadItemTbl();

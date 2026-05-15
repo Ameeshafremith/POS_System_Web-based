@@ -60,7 +60,6 @@ $('#customer_save_btn').on('click', function () {
         return;
     }
 
-
     if (getCustomerDataById(id)) {
         Swal.fire({icon:"error", title:"ID already exists"});
         return;
@@ -85,12 +84,9 @@ $('#customer_save_btn').on('click', function () {
     loadCustomerTbl();
     cleanCustomerForm();
 
-
     refreshDropdowns();
 
     Swal.fire({icon:"success",title:"Customer Saved"});
-
-
 
 });
 
