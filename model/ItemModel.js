@@ -10,7 +10,7 @@ class Item {
     }
 }
 
-/* CRUD */
+
 const addItemData = (id, name, qty, unit,price) => {
     item_db.push(new Item(id, name, qty, unit,price));
 }

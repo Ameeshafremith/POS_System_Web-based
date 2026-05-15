@@ -22,7 +22,7 @@
         <div class="login-container">
             <div class="left-panel">
                 <h1>WELCOME!</h1>
-                <p>The most popular POS System is here.</p>
+                <p>The RevivePC's POS system</p>
             </div>
 
             <div class="right-panel">
@@ -40,20 +40,18 @@
     </form>
 </section>
 
-
-<!-- Sidebar -->
 <section id="dashboard_section" style="display:none;">
 
 <div class="main">
 
     <aside class="sidebar">
-        <h2>DASHBOARD</h2>
+        <h2>Control Panel</h2>
         <ul>
-            <li id="dashboard_tab">🏠 Dashboard</li>
-            <li id="customer_tab">👤 Customer</li>
-            <li id="item_tab">📦 Items</li>
-            <li id="order_tab">🧾 Orders</li>
-            <li id="logout_btn">🚪 Logout</li>
+            <li id="dashboard_tab">Dashboard</li>
+            <li id="customer_tab">Customer</li>
+            <li id="item_tab">Items</li>
+            <li id="order_tab">Orders</li>
+            <li id="logout_btn">Logout</li>
         </ul>
     </aside>
 
@@ -62,7 +60,6 @@
         <section id="dashboard_content" class="content">
             <h1 id="d1">Dashboard</h1>
 
-            <!-- Stat Cards -->
             <div class="dash-stat-grid">
                 <div class="dash-stat-card">
                     <div class="dash-stat-icon" style="color:#378ADD">📦</div>
@@ -90,7 +87,6 @@
                 </div>
             </div>
 
-            <!-- Charts -->
             <div class="dash-chart-grid">
                 <div class="dash-chart-card">
                     <div class="dash-chart-header">
@@ -190,13 +186,13 @@
                         <input type="number" class="form-control" id="item_qty_input">
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label">Unit</label>
-                        <input type="text" class="form-control" id="item_unit_input">
-                    </div>
+<!--                    <div class="mb-3">-->
+<!--                        <label class="form-label">Unit</label>-->
+<!--                        <input type="text" class="form-control" id="item_unit_input">-->
+<!--                    </div>-->
 
                     <div class="mb-3">
-                        <label class="form-label">Price</label>
+                        <label class="form-label">Unit Price</label>
                         <input type="text" class="form-control" id="item_price_input">
                     </div>
 
@@ -214,7 +210,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Qty</th>
-                        <th>Unit</th>
+                        <!--<th>Unit</th>-->
                         <th>Price</th>
                     </tr>
                     </thead>
@@ -227,7 +223,6 @@
 
             <h1>Order Management</h1>
 
-            <!-- Customer + Item Select -->
             <div class="order-top-box">
                 <div class="input-group">
                     <label>Customer</label>
@@ -247,7 +242,6 @@
                 <button type="button" id="add_item_btn">Add</button>
             </div>
 
-            <!-- Cart Table -->
             <table class="table">
                 <thead>
                 <tr>
@@ -268,7 +262,6 @@
 
             <hr>
 
-            <!-- Order History -->
             <h3>Order History</h3>
             <table class="table">
                 <thead>

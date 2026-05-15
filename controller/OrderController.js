@@ -6,7 +6,6 @@ import { order_db } from "../db/db.js";
 
 let cart = [];
 
-  /*  ADD ITEM TO CART */
 
 $('#add_item_btn').on('click', function () {
 
@@ -40,7 +39,7 @@ $('#add_item_btn').on('click', function () {
     loadCart();
 });
 
-/* LOAD CART */
+
 const loadCart = () => {
 
     $('#cart_tbody').empty();
@@ -60,7 +59,7 @@ const loadCart = () => {
     $('#grand_total').text(total);
 };
 
-/* PLACE ORDER */
+
 $('#place_order_btn').on('click', function (e) {
 
     e.preventDefault();
@@ -99,7 +98,6 @@ $('#place_order_btn').on('click', function (e) {
 });
 
 
-/*  ORDER HISTORY */
 const loadOrderHistory = () => {
 
     $('#order_tbody').empty();
@@ -116,7 +114,7 @@ const loadOrderHistory = () => {
     });
 };
 
-/* INIT */
+
 $(document).ready(function () {
     refreshDropdowns();
     loadOrderHistory();

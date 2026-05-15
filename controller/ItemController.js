@@ -1,6 +1,5 @@
 import { refreshDropdowns } from "./DropDownController.js";
 
-
 import {
     addItemData,
     updateItemData,
@@ -11,7 +10,6 @@ import {
 } from '../model/ItemModel.js';
 
 
-/* Load Table */
 const loadItemTbl = () => {
     $('#item_tbody').empty();
 
@@ -25,21 +23,19 @@ const loadItemTbl = () => {
             <td>${item.qty}</td>
             <td>${item.unit}</td>
             <td>${item.price}</td>
-            
-    
-           
+
         </tr>
         `;
         $('#item_tbody').append(row);
     });
 }
 
-/* Clean */
+
 const cleanItemForm = () => {
     $('#item_reset_btn').click();
 }
 
-/* Row Click */
+
 $('#item_tbody').on('click', 'tr', function () {
 
     let index = $(this).attr("data-index");
@@ -51,7 +47,8 @@ $('#item_tbody').on('click', 'tr', function () {
     $('#item_unit_input').val(obj.unit);
     $('#item_price_input').val(obj.price);
 });
-/* Save */
+
+
 $('#item_save_btn').on('click', function () {
 
     let id = $('#item_id_input').val();
@@ -60,12 +57,10 @@ $('#item_save_btn').on('click', function () {
     let unit = $('#item_unit_input').val();
     let price = $('#item_price_input').val();
 
-    // validation stop
     if (id == "") {
         Swal.fire({icon:"error", title:"Invalid ID"});
         return;
     }
-
 
     if (getItemDataById(id)) {
         Swal.fire({icon:"error", title:"ID already exists"});
@@ -103,7 +98,7 @@ $('#item_save_btn').on('click', function () {
 
 });
 
-/* Update */
+
 $('#item_update_btn').on('click', function () {
     let id = $('#item_id_input').val();
     let name = $('#item_name_input').val();
@@ -126,7 +121,7 @@ $('#item_update_btn').on('click', function () {
 });
 
 
-/* Delete */
+
 $('#item_delete_btn').on('click', function () {
     let id = $('#item_id_input').val();
 

@@ -14,7 +14,7 @@ import {
     check_customer_phone
 } from '../utils/regex_utils.js';
 
-/* Load Table */
+
 const loadCustomerTbl = () => {
     $('#customer_tbody').empty();
 
@@ -33,12 +33,10 @@ const loadCustomerTbl = () => {
     });
 }
 
-/* Clean */
 const cleanCustomerForm = () => {
     $('#customer_reset_btn').click();
 }
 
-/* Row Click */
 $('#customer_tbody').on('click', 'tr', function () {
 
     let index = $(this).attr("data-index");
@@ -49,7 +47,7 @@ $('#customer_tbody').on('click', 'tr', function () {
     $('#customer_phone_input').val(obj.phone);
     $('#customer_address_input').val(obj.address);
 });
-/* Save */
+
 $('#customer_save_btn').on('click', function () {
 
     let id = $('#customer_id_input').val();
@@ -57,7 +55,6 @@ $('#customer_save_btn').on('click', function () {
     let phone = $('#customer_phone_input').val();
     let address = $('#customer_address_input').val();
 
-    // validation stop
     if (id == "") {
         Swal.fire({icon:"error", title:"Invalid ID"});
         return;
@@ -97,7 +94,7 @@ $('#customer_save_btn').on('click', function () {
 
 });
 
-/* Update */
+
 $('#customer_update_btn').on('click', function () {
     let id = $('#customer_id_input').val();
     let name = $('#customer_name_input').val();
@@ -117,7 +114,7 @@ $('#customer_update_btn').on('click', function () {
 });
 
 
-/* Delete */
+
 $('#customer_delete_btn').on('click', function () {
     let id = $('#customer_id_input').val();
 
